@@ -2,13 +2,18 @@ package com.bigdata2019.hellospring.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HelloController {
 	
 	@RequestMapping("/hello")
-	public String hello(String name) {
-		System.out.println(name);
+	public String hello(
+		@RequestParam(value="n", required=true, defaultValue="") String name,
+		@RequestParam(value="a", required=true, defaultValue="0") Integer age) {
+		System.out.println("--" + name + "--");
+		System.out.println("--" + age + "--");
+		
 		return "/WEB-INF/views/hello.jsp";
 	}
 	
